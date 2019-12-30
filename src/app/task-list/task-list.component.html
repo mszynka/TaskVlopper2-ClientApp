@@ -1,0 +1,43 @@
+<h1>Tasks</h1>
+
+<p *ngIf="!(tasks$ | async)"><em>Loading...</em></p>
+<p>
+  <a [routerLink]="['/add']" class="btn btn-primary float-right mb-3"
+    >New task</a
+  >
+</p>
+
+<table class="table table-sm table-hover" *ngIf="(tasks$ | async)?.length > 0">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks$ | async">
+      <td>{{ task.taskId }}</td>
+      <td>
+        <a [routerLink]="['/task/', task.taskId]">{{ task.title }}</a>
+      </td>
+      <td>{{ task.creator }}</td>
+      <td>{{ task.dt | date: "yyyy-MM-dd" }}</td>
+      <td>
+        <a
+          [routerLink]=""
+          (click)="delete(task.taskId)"
+          class="btn btn-danger btn-sm float-right"
+          >Delete</a
+        >
+        <a
+          [routerLink]="['/task/edit/', task.taskId]"
+          class="btn btn-primary btn-sm float-right"
+          >Edit</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</table>

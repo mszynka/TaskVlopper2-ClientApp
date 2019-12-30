@@ -1,0 +1,9 @@
+<ng-container *ngIf="task$ | async as task; else loading">
+  <h1>{{ task.title }}</h1>
+  <div>{{ task.description }}</div>
+  <ul>
+    <li>{{ task.creator }}</li>
+    <li>{{ task.dt | date: "yyyy-MM-dd" }}</li>
+  </ul>
+</ng-container>
+<ng-template #loading>Loading...</ng-template>
