@@ -49,7 +49,7 @@ export class TaskAddEditComponent implements OnInit {
         .subscribe(data => {
           this.existingTask = data,
             this.form.controls[this.formTitle].setValue(data.title),
-            this.form.controls[this.formDescription].setValue(data.description)
+            this.form.controls[this.formDescription].setValue(data.description);
         });
     }
   }
