@@ -28,10 +28,11 @@ steps:
   displayName: 'Tests'
 
 - task: PublishTestResults@2
+  condition: succeededOrFailed()
   inputs:
     testResultsFormat: 'JUnit'
     testResultsFiles: '**/TESTS-*.xml'
-    failTaskOnFailedTests: true
+    failTaskOnFailedTests: false
   displayName: 'Publish Test Results'
 
 - task: PublishCodeCoverageResults@1
