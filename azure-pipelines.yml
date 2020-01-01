@@ -20,3 +20,23 @@ steps:
 
 - script: npx ng build --prod
   displayName: 'Build'
+
+- script: npx ng lint
+  displayName: 'Code Analysis'
+
+- script: npx ng test --watch=false --codeCoverage=true
+  displayName: 'Tests'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: '**/TEST-*.xml'
+    failTaskOnFailedTests: true
+  displayName: 'Publish Test Results'
+
+- task: PublishCodeCoverageResults@1
+  condition: succeededOrFailed()
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(Build.SourcesDirectory)/coverage/ClientApp/cobertura-coverage.xml'
+  displayName: 'Publish Code Coverage Results'
