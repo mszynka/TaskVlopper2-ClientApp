@@ -1,5 +1,7 @@
 # ClientApp
 
+[![Build Status](https://dev.azure.com/mateuszszynka/mszynka/_apis/build/status/mszynka.TaskVlopper2-ClientApp?branchName=master)](https://dev.azure.com/mateuszszynka/mszynka/_build/latest?definitionId=2&branchName=master)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
 
 ## Development server
