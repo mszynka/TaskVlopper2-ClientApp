@@ -1,13 +1,11 @@
 <h1>Tasks</h1>
-
-<p *ngIf="!(tasks$ | async)"><em>Loading...</em></p>
 <p>
   <a [routerLink]="['/add']" class="btn btn-primary float-right mb-3"
     >New task</a
   >
 </p>
 
-<table class="table table-sm table-hover" *ngIf="(tasks$ | async)?.length > 0">
+<table class="table table-sm table-hover" *ngIf="(tasks$ | async)?.length > 0; else loading">
   <thead>
     <tr>
       <th>#</th>
@@ -41,3 +39,4 @@
     </tr>
   </tbody>
 </table>
+<ng-template #loading>Loading...</ng-template>
